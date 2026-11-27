@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="dark" />
+  <title>ClipFlow | Mission Control · Demo</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar" aria-label="Primary navigation">
+      <div class="logo-wrap"><div class="brand-mark"><span>C</span><i></i></div><div><div class="brand">clipflow<span class="brand-dot">.</span></div><div class="brand-sub">MISSION CONTROL</div></div></div>
+      <div class="nav-label">WORKSPACE</div>
+      <nav class="nav" id="main-nav">
+        <button class="nav-link active" data-view="overview"><span class="nav-ico">▦</span> Overview <span class="nav-kbd">01</span></button>
+        <button class="nav-link" data-view="trends"><span class="nav-ico">↗</span> Trend Hunter <span class="nav-kbd">02</span></button>
+        <button class="nav-link" data-view="production"><span class="nav-ico">◫</span> Production <span class="nav-kbd">03</span></button>
+        <button class="nav-link" data-view="publishing"><span class="nav-ico">⇧</span> Publishing <span class="nav-kbd">04</span></button>
+        <button class="nav-link" data-view="storage"><span class="nav-ico">▤</span> Storage & Retention <span class="nav-kbd">05</span></button>
+        <button class="nav-link" data-view="health"><span class="nav-ico">♡</span> System Health <span class="nav-kbd">06</span></button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="agent-card"><span class="agent-orb"></span><div><strong>Automation status</strong><span>Not connected</span></div></div>
+        <div class="sidebar-footer"><span class="tiny-square"></span> ClipFlow v0.6 · Local preview</div>
+      </div>
+    </aside>
+    <div class="main-wrap">
+      <header class="topbar"><div class="breadcrumbs"><span>WORKSPACE</span><b>/</b><span id="crumb-current">OVERVIEW</span></div><div class="top-actions"><span class="mode-pill"><span class="pulse-dot"></span> SYNTHETIC DEMO</span><span class="top-utc" id="localtime">--:-- PHT</span><div class="avatar">CF</div></div></header>
+      <main class="content" id="content" tabindex="-1"><div class="loading">Loading local demonstration…</div></main>
+      <footer class="footer"><span>ClipFlow · P0 offline preview</span><span>No account connections · No real operations</span></footer>
+    </div>
+  </div>
+</body>
+</html>

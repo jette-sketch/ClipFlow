@@ -1,0 +1,55 @@
+{
+  "name": "ClipFlow 01 | Telegram Intake + YouTube Trend Hunter",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "clipflow-command",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "clipflow-01-hook",
+      "name": "Telegram Poller Intake",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [240, 300],
+      "webhookId": "clipflow-command"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://clipflow-api:8000/v1/commands",
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json.body) }}",
+        "options": {"timeout": 45000}
+      },
+      "id": "clipflow-01-forward",
+      "name": "Authorize, Deduplicate, and Process Command",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [510, 300]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($json) }}",
+        "options": {"responseCode": 200}
+      },
+      "id": "clipflow-01-ack",
+      "name": "ACK Only After Durable Acceptance",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [800, 300]
+    }
+  ],
+  "connections": {
+    "Telegram Poller Intake": {"main": [[{"node":"Authorize, Deduplicate, and Process Command","type":"main","index":0}]]},
+    "Authorize, Deduplicate, and Process Command": {"main": [[{"node":"ACK Only After Durable Acceptance","type":"main","index":0}]]}
+  },
+  "settings": {"executionOrder":"v1","timezone":"Asia/Manila","saveDataErrorExecution":"all","saveDataSuccessExecution":"none"},
+  "active": false,
+  "pinData": {},
+  "tags": []
+}

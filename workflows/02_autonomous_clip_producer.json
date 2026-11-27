@@ -1,0 +1,124 @@
+{
+  "name": "ClipFlow 02 | Clip Producer + Seven-Day Retention",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 1
+            }
+          ]
+        }
+      },
+      "id": "clipflow-02-schedule",
+      "name": "Dispatch Every Minute",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        220,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://clipflow-api:8000/v1/dispatch",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "{\"action\":\"dispatch_eligible_jobs\"}",
+        "options": {
+          "timeout": 20000
+        }
+      },
+      "id": "clipflow-02-dispatch",
+      "name": "Claim Eligible Neon Job and Wake Worker",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        510,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 15 3 * * *"
+            }
+          ]
+        }
+      },
+      "id": "clipflow-02-retention-schedule",
+      "name": "Retention Daily 03:15 PHT",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        220,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://clipflow-api:8000/v1/retention/sweep",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "{\"action\":\"sweep_eligible_assets\",\"max_items\":25}",
+        "options": {
+          "timeout": 20000
+        }
+      },
+      "id": "clipflow-02-retention-dispatch",
+      "name": "Request Bounded Retention Sweep (Backend Gate)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        520,
+        580
+      ]
+    }
+  ],
+  "connections": {
+    "Dispatch Every Minute": {
+      "main": [
+        [
+          {
+            "node": "Claim Eligible Neon Job and Wake Worker",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retention Daily 03:15 PHT": {
+      "main": [
+        [
+          {
+            "node": "Request Bounded Retention Sweep (Backend Gate)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Asia/Manila",
+    "saveDataErrorExecution": "all",
+    "saveDataSuccessExecution": "none"
+  },
+  "active": false,
+  "pinData": {},
+  "tags": []
+}

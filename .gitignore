@@ -1,0 +1,41 @@
+# Secrets and credentials
+.env
+.env.*
+!.env.example
+*credentials*.json
+*token*.json
+*.pem
+*.key
+*.p12
+*.pfx
+secrets/
+
+# Media, databases and caches, never commit client assets
+*.mp4
+*.mov
+*.mkv
+*.avi
+*.wav
+*.mp3
+*.srt
+*.ass
+*.sqlite
+*.sqlite3
+*.db
+*.log
+models/
+downloads/
+media/
+outputs/
+cache/
+.local/
+
+# Python / editor / local runtime
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/
+.vscode/
+.idea/
+.DS_Store

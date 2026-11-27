@@ -1,0 +1,32 @@
+name: Offline qualification
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  offline-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Python contract tests
+        run: python -m unittest discover -s tests -v
+      - name: JavaScript syntax validation
+        run: node --check dashboard/public/app.js
+      - name: Workflow JSON static validation
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          paths = sorted(Path('workflows').glob('*.json'))
+          assert len(paths) == 2, paths
+          for p in paths:
+              j = json.loads(p.read_text())
+              assert j.get('active') is False, p
+              assert j.get('nodes'), p
+          print('2 inactive workflows verified')
+          PY

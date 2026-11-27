@@ -1,0 +1,85 @@
+{
+  "mode": "synthetic_demo",
+  "connected": false,
+  "schema_version": "0.6-preview",
+  "window_days": 7,
+  "summary": {
+    "trends_found": 124,
+    "drafts_ready": 18,
+    "published_verified": 9,
+    "open_incidents": 3,
+    "clips_total": 38,
+    "pass_rate_pct": 84,
+    "source_count": 12
+  },
+  "capacity": {
+    "drive_bytes": 4939212390,
+    "drive_quota_bytes": 15000000000,
+    "neon_estimate_bytes": 126517248,
+    "neon_quota_bytes": 1073741824,
+    "local_cache_bytes": 1861224480,
+    "cleanup_due_count": 6,
+    "cleanup_held_count": 2,
+    "reclaimed_last_7d_bytes": 2948304896
+  },
+  "pipeline": [
+    {"name":"Discovered","count":124},
+    {"name":"Approved sources","count":38},
+    {"name":"Clipped","count":31},
+    {"name":"Draft delivered","count":18},
+    {"name":"Published","count":9}
+  ],
+  "activity": [
+    {"day":"Fri","trends":16,"clips":3},
+    {"day":"Sat","trends":14,"clips":4},
+    {"day":"Sun","trends":20,"clips":2},
+    {"day":"Mon","trends":13,"clips":6},
+    {"day":"Tue","trends":21,"clips":5},
+    {"day":"Wed","trends":18,"clips":4},
+    {"day":"Thu","trends":22,"clips":7}
+  ],
+  "trends": [
+    {"id":"DEMO-T01","topic":"GTA 6","title":"GTA 6 new gameplay analysis (sample)","channel":"Demo Gaming Lab","views":1240000,"views_per_hour":21500,"published":"3h ago","confidence":"Proxy only","scope":"Matched"},
+    {"id":"DEMO-T02","topic":"GTA 6","title":"Grand Theft Auto VI trailer reaction (sample)","channel":"Sample Creator","views":865000,"views_per_hour":16900,"published":"7h ago","confidence":"Proxy only","scope":"Matched"},
+    {"id":"DEMO-T03","topic":"AI Agents","title":"New agent workflows explained (sample)","channel":"Example Automation","views":409000,"views_per_hour":11000,"published":"5h ago","confidence":"Proxy only","scope":"Matched"},
+    {"id":"DEMO-T04","topic":"GTA 6","title":"GTA VI map theories (sample)","channel":"Mock Gaming Hub","views":287000,"views_per_hour":9600,"published":"13h ago","confidence":"Proxy only","scope":"Matched"},
+    {"id":"DEMO-T05","topic":"Tech","title":"Creator tools roundup (sample)","channel":"Sample Tech Review","views":132000,"views_per_hour":3900,"published":"1d ago","confidence":"Proxy only","scope":"Matched"}
+  ],
+  "jobs": [
+    {"id":"CF-DEMO-0284","title":"GTA 6 quick breakdown","state":"Delivered","progress":100,"duration":"00:42","created":"12 min ago","size_mb":38.5},
+    {"id":"CF-DEMO-0283","title":"AI agents in action","state":"Rendering","progress":72,"duration":"00:54","created":"23 min ago","size_mb":0},
+    {"id":"CF-DEMO-0282","title":"GTA VI fan analysis","state":"Draft Ready","progress":100,"duration":"00:37","created":"1h ago","size_mb":61.8},
+    {"id":"CF-DEMO-0281","title":"Workflow highlights","state":"Published","progress":100,"duration":"00:48","created":"3h ago","size_mb":47.2},
+    {"id":"CF-DEMO-0280","title":"GTA 6 community reactions","state":"Attention","progress":100,"duration":"00:51","created":"6h ago","size_mb":48.6},
+    {"id":"CF-DEMO-0279","title":"Short-form editing tips","state":"Queued","progress":0,"duration":"00:35","created":"7h ago","size_mb":0}
+  ],
+  "uploads": [
+    {"clip":"CF-DEMO-0281","platform":"YouTube","status":"Published verified","retries":0,"limit":5,"updated":"3h ago"},
+    {"clip":"CF-DEMO-0281","platform":"TikTok","status":"Published verified","retries":1,"limit":5,"updated":"3h ago"},
+    {"clip":"CF-DEMO-0280","platform":"YouTube","status":"Published verified","retries":0,"limit":5,"updated":"6h ago"},
+    {"clip":"CF-DEMO-0280","platform":"TikTok","status":"Reconcile required","retries":2,"limit":5,"updated":"4h ago"},
+    {"clip":"CF-DEMO-0282","platform":"YouTube","status":"Draft archived","retries":0,"limit":5,"updated":"1h ago"},
+    {"clip":"CF-DEMO-0282","platform":"TikTok","status":"Integration blocked","retries":0,"limit":5,"updated":"1h ago"}
+  ],
+  "retention": [
+    {"id":"ASSET-01","kind":"Rendered MP4","size_mb":148,"age":"8d 2h","state":"Eligible","reason":"none"},
+    {"id":"ASSET-02","kind":"Source video","size_mb":1520,"age":"9d 4h","state":"Held","reason":"Active clip job"},
+    {"id":"ASSET-03","kind":"Rendered MP4","size_mb":62,"age":"7d 1h","state":"Held","reason":"TikTok result unknown"},
+    {"id":"ASSET-04","kind":"Subtitle","size_mb":0.2,"age":"7d 3h","state":"Eligible","reason":"none"},
+    {"id":"ASSET-05","kind":"Rendered MP4","size_mb":37,"age":"2d 4h","state":"Protected","reason":"Not yet 168h"}
+  ],
+  "incidents": [
+    {"severity":"High","title":"TikTok upload response uncertain","detail":"CF-DEMO-0280 needs reconciliation before another attempt","age":"24 min ago","status":"Open"},
+    {"severity":"Medium","title":"Drive storage nearing policy threshold","detail":"Mock warning; no real Drive account connected","age":"2h ago","status":"Open"},
+    {"severity":"Medium","title":"Worker processing time above baseline","detail":"Local rendering took longer than synthetic target","age":"4h ago","status":"Open"},
+    {"severity":"Low","title":"Retention sweep dry-run completed","detail":"6 example assets eligible, 2 held; no files deleted","age":"6h ago","status":"Resolved"}
+  ],
+  "systems": [
+    {"name":"Telegram command bridge","state":"Demo only","detail":"Connection not configured"},
+    {"name":"n8n orchestrator","state":"Not connected","detail":"Two workflow JSON scaffolds"},
+    {"name":"Neon PostgreSQL","state":"Not connected","detail":"Schema migrations unapplied"},
+    {"name":"Google Drive","state":"Not connected","detail":"Dedicated Gmail pending"},
+    {"name":"YouTube API","state":"Not connected","detail":"API credentials pending"},
+    {"name":"TikTok Publishing","state":"Gate blocked","detail":"Official publishing eligibility pending"}
+  ]
+}
