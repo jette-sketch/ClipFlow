@@ -2,6 +2,7 @@
 
 | Scope | Evidence | Status |
 | --- | --- | --- |
+| Public GitHub source and CI | 32 source files; exact release tree match; GitHub Actions run `45947285350` success | VERIFIED FOR RELEASE COMMIT `7f661f8` |
 | Two n8n workflow JSON definitions | Static JSON checks; inactive | OFFLINE PASS |
 | Telegram intent parsing and authentication contracts | Pure Python tests | OFFLINE PASS |
 | Topic filtering for GTA 6 | Pure Python tests | OFFLINE PASS |
