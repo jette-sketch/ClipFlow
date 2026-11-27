@@ -9,7 +9,6 @@ import os
 import re
 from pathlib import Path
 import time
-import requests
 from clipflow_core import signed_update
 
 BOT_TOKEN=os.environ['CLIPFLOW_TELEGRAM_BOT_TOKEN']
@@ -49,6 +48,7 @@ def forward(session, update):
         raise RuntimeError('Command was not durably accepted by gateway; retry')
 
 def run():
+    import requests  # optional production dependency; requirements-poller.txt
     offset=get_offset()
     session=requests.Session()
     while True:

@@ -1,0 +1,2 @@
+# Optional reference Telegram polling bridge runtime dependency.
+requests==2.32.5
